@@ -10,10 +10,10 @@ const Landing: React.FC = () => {
             <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
                 <div className="text-center pb-12">
                     <h2 className="text-base font-bold text-indigo-600">
-                        We have the best equipment in the market
+                        We have exactly what you are looking for...
                     </h2>
                     <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                        Check our awesome team members
+                        Check our awesome influencers
                     </h1>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -22,15 +22,13 @@ const Landing: React.FC = () => {
                     <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
                         <div className="w-full md:w-2/5 h-80">
                             <img className="object-center object-cover w-full h-full"
-                                 src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                                 src="https://cdn.discordapp.com/attachments/684833653242593320/911666122137427998/camphoto_1804928587.JPG"
                                  alt="photo"/>
                         </div>
                         <div className="w-full md:w-3/5 text-left p-4 md:p-4 space-y-2">
-                            <p className="text-xl text-gray-700 font-bold">Lucy Carter</p>
-                            <p className="text-base text-gray-400 font-normal">Graphic Designer</p>
-                            <p className="text-base leading-relaxed text-gray-500 font-normal">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua.</p>
+                            <p className="text-xl text-gray-700 font-bold">Aymeric Larvet</p>
+                            <p className="text-base text-gray-400 font-normal">IoT Engineer</p>
+                            <p className="text-base leading-relaxed text-gray-500 font-normal">I know how to comment code in arduino editor.</p>
                             <div className="flex justify-start space-x-2">
                                 <a href="#" className="text-gray-500 hover:text-gray-600">
                                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -65,15 +63,13 @@ const Landing: React.FC = () => {
                     <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
                         <div className="w-full md:w-2/5 h-80">
                             <img className="object-center object-cover w-full h-full"
-                                 src="https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80"
+                                 src="https://scontent-cdg2-1.xx.fbcdn.net/v/t31.18172-8/19956971_1469953669749536_9141682154815299786_o.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=5EHs9Vw8alsAX91kEAh&_nc_ht=scontent-cdg2-1.xx&oh=e74560bb693839968cbd318aa4873996&oe=61C0ADFA"
                                  alt="photo"/>
                         </div>
                         <div className="w-full md:w-3/5 text-left p-4 md:p-4 space-y-2">
-                            <p className="text-xl text-gray-700 font-bold">Jade Bradley</p>
-                            <p className="text-base text-gray-400 font-normal">Dev Ops</p>
-                            <p className="text-base leading-relaxed text-gray-500 font-normal">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua.</p>
+                            <p className="text-xl text-gray-700 font-bold">Marion Mota</p>
+                            <p className="text-base text-gray-400 font-normal">IA Expert</p>
+                            <p className="text-base leading-relaxed text-gray-500 font-normal">Blop ! I take pleasure to develop a fight club with IA.</p>
                             <div className="flex justify-start space-x-2">
                                 <a href="#" className="text-gray-500 hover:text-gray-600">
                                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -108,15 +104,13 @@ const Landing: React.FC = () => {
                     <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
                         <div className="w-full md:w-2/5 h-80">
                             <img className="object-center object-cover w-full h-full"
-                                 src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80"
+                                 src="https://cdn.discordapp.com/attachments/909802705403392081/909804741314379786/51sdoOtxfKL.png"
                                  alt="photo"/>
                         </div>
                         <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
-                            <p className="text-xl text-gray-700 font-bold">Dany Bailey</p>
-                            <p className="text-base text-gray-400 font-normal">Software Engineer</p>
-                            <p className="text-base leading-relaxed text-gray-500 font-normal">Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                aliqua.</p>
+                            <p className="text-xl text-gray-700 font-bold">MyOnlyFun</p>
+                            <p className="text-base text-gray-400 font-normal">Professional website</p>
+                            <p className="text-base leading-relaxed text-gray-500 font-normal">Just for fun. I promise it's not an adult website</p>
                             <div className="flex justify-start space-x-2">
                                 <a href="#" className="text-gray-500 hover:text-gray-600">
                                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
@@ -236,6 +230,180 @@ const Landing: React.FC = () => {
                     </div>
                 </div>
             </section>
+            {/* Footer   */}
+            <footer className="bg-gray-800 pt-10 sm:mt-10 pt-10">
+                <div className="max-w-6xl m-auto text-gray-800 flex flex-wrap justify-left">
+                    {/*// <!-- Col-1 -->*/}
+                    <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
+                        {/*// <!-- Col Title -->*/}
+                        <div className="text-xs uppercase text-gray-400 font-medium mb-6">
+                            Getting Started
+                        </div>
+
+                        {/*// <!-- Links -->*/}
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Installation
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Release Notes
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Upgrade Guide
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Using with Preprocessors
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Optimizing for Production
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Browser Support
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            IntelliSense
+                        </a>
+                    </div>
+
+                    {/*// <!-- Col-2 -->*/}
+                    <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
+                        {/*// <!-- Col Title -->*/}
+                        <div className="text-xs uppercase text-gray-400 font-medium mb-6">
+                            Core Concepts
+                        </div>
+
+                        {/*// <!-- Links -->*/}
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Utility-First
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Responsive Design
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Hover, Focus, & Other States
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Dark Mode
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Adding Base Styles
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Extracting Components
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Adding New Utilities
+                        </a>
+                    </div>
+
+                    {/*// <!-- Col-3 -->*/}
+                    <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
+                        {/*// <!-- Col Title -->*/}
+                        <div className="text-xs uppercase text-gray-400 font-medium mb-6">
+                            Customization
+                        </div>
+
+                        {/*// <!-- Links -->*/}
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Configuration
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Theme Configuration
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Breakpoints
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Customizing Colors
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Customizing Spacing
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Configuring Variants
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Plugins
+                        </a>
+                    </div>
+
+                    {/*// <!-- Col-3 -->*/}
+                    <div className="p-5 w-1/2 sm:w-4/12 md:w-3/12">
+                        {/*// <!-- Col Title -->*/}
+                        <div className="text-xs uppercase text-gray-400 font-medium mb-6">
+                            Community
+                        </div>
+
+                        {/*// <!-- Links -->*/}
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            GitHub
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Discord
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            Twitter
+                        </a>
+                        <a href="#"
+                           className="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                            YouTube
+                        </a>
+                    </div>
+                </div>
+
+                {/*// <!-- Copyright Bar -->*/}
+                <div className="pt-2">
+                    <div className="flex pb-5 px-3 m-auto pt-5
+            border-t border-gray-500 text-gray-400 text-sm
+            flex-col md:flex-row max-w-6xl">
+                        <div className="mt-2">
+                            © Copyright 1998-year. All Rights Reserved.
+                        </div>
+
+                        {/*// <!-- Required Unicons (if you want) -->*/}
+                        <div className="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
+                            <a href="#" className="w-6 mx-1">
+                                <i className="uil uil-facebook-f"/>
+                            </a>
+                            <a href="#" className="w-6 mx-1">
+                                <i className="uil uil-twitter-alt"/>
+                            </a>
+                            <a href="#" className="w-6 mx-1">
+                                <i className="uil uil-youtube"/>
+                            </a>
+                            <a href="#" className="w-6 mx-1">
+                                <i className="uil uil-linkedin"/>
+                            </a>
+                            <a href="#" className="w-6 mx-1">
+                                <i className="uil uil-instagram"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </>
     );
 };
