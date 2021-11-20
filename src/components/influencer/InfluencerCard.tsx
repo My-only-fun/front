@@ -1,18 +1,23 @@
 import React from 'react';
+import InfluencerModel from "./InfluencerModel";
 
-const InfluencerCard : React.FC = () => {
+interface InfluencerProps  {
+    influencer: InfluencerModel;
+}
+
+const InfluencerCard : React.FC<InfluencerProps> = ({influencer}) => {
     return (
         <div>
             <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
                 <div className="w-full md:w-2/5 h-80">
                     <img className="object-center object-cover w-full h-full"
-                         src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.18169-9/24852611_1499818266739132_5187376035313257790_n.jpg?_nc_cat=100&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=0hw6NdNgJrMAX8eJmDh&_nc_ht=scontent-cdg2-1.xx&oh=9fc5cce4090ce767475e4b36af3797eb&oe=61BF0C44"
+                         src={influencer.avatar}
                          alt="photo"/>
                 </div>
                 <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
-                    <p className="text-xl text-gray-700 font-bold">Gwendal Siwiorek</p>
-                    <p className="text-base text-gray-400 font-normal">Software Engineer</p>
-                    <p className="text-base leading-relaxed text-gray-500 font-normal">Trust me I'm a wonderful engineer</p>
+                    <p className="text-xl text-gray-700 font-bold">{influencer.name}</p>
+                    <p className="text-base text-gray-400 font-normal">{influencer.job}</p>
+                    <p className="text-base leading-relaxed text-gray-500 font-normal">{influencer.description}</p>
                     <div className="flex justify-start space-x-2">
                         <a href="#" className="text-gray-500 hover:text-gray-600">
                             <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
