@@ -4,6 +4,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from "./components/Landing";
+import InfluencerDetail from "./components/influencer/InfluencerDetail";
+import PrivateRoute from "./components/Routing/PrivateRoute";
 
 function App() {
   const queryClient = new QueryClient();
@@ -16,6 +18,7 @@ function App() {
               <Route exact path="/">
                 <Landing />
               </Route>
+              <PrivateRoute path="/influencer/:id" component={InfluencerDetail}/>
             </Switch>
           </BrowserRouter>
           <ReactQueryDevtools initialIsOpen={false} />
