@@ -27,8 +27,22 @@ const Landing: React.FC = () => {
     }
   }
 
+  let influencersListComponent: JSX.Element = <NoInfluencers />;
   if (influencerData) {
     influencerList = influencerData;
+    if (influencerList.length !== 0) {
+      influencersListComponent = (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {influencerList.map((influencer: InfluencerModel) => (
+            <Link to={"/influencer/" + influencer.id}>
+              <InfluencerCard key={influencer.id} influencer={influencer} />
+            </Link>
+          ))}
+        </div>
+      );
+    } else {
+      influencersListComponent = <NoInfluencers />;
+    }
   }
 
   return (
@@ -44,21 +58,7 @@ const Landing: React.FC = () => {
             Check our awesome influencers
           </h1>
         </div>
-
-        {influencerList.length !== 0 ? (
-          influencerList.map((influencer: InfluencerModel) => (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <Link to={"/influencer/" + influencer.id}>
-                <InfluencerCard key={influencer.id} influencer={influencer} />
-              </Link>
-            </div>
-          ))
-        ) : (
-          <>
-            {/*<h1>Oops... there is no influencers yet ...</h1>*/}
-            <NoInfluencers />
-          </>
-        )}
+        {influencersListComponent}
       </section>
       <Footer />
     </>
