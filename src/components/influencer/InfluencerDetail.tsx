@@ -1,10 +1,7 @@
 import React from "react";
-// import Header from "../Header";
 import { RouteComponentProps } from "react-router-dom";
 import Page from "../Page/Page";
 import useInfluencerDetail from "../../hooks/influencer";
-// import useInfluencerDetail from "../../hooks/influencer";
-// import Page from "../Page/Page";
 
 interface InfluencerDetailParams {
   id: string;
@@ -13,7 +10,22 @@ interface InfluencerDetailParams {
 const InfluencerDetail = ({
   match,
 }: RouteComponentProps<InfluencerDetailParams>) => {
-  const influencer = useInfluencerDetail(match.params.id);
+  const {
+    isLoading: isInfluencerLoading,
+    isError: isInfluencerError,
+    data: influencer,
+    error,
+  } = useInfluencerDetail(match.params.id);
+
+  if (isInfluencerLoading) {
+    return <span>Loading....</span>;
+  }
+
+  if (isInfluencerError) {
+    if (error) {
+      return <span>Error: {error.message}</span>;
+    }
+  }
 
   return (
     <Page>
@@ -22,7 +34,7 @@ const InfluencerDetail = ({
           <div className="w-full md:w-3/4 p-4 text-center">
             <div className="text-left pl-4 pt-3">
               <span className="text-base text-gray-700 text-2xl mr-2">
-                {influencer.name}
+                {influencer?.name}
               </span>
               {/*<span className="text-base font-semibold text-gray-700 mr-2">*/}
               {/*  <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">*/}
@@ -64,16 +76,16 @@ const InfluencerDetail = ({
 
             <div className="text-left pl-4 pt-3">
               <span className="text-lg font-bold text-gray-700 mr-2">
-                {influencer.job}
+                {influencer?.job}
               </span>
             </div>
 
             <div className="text-left pl-4 pt-3">
               <p className="text-base font-medium text-blue-700 mr-2">
-                {influencer.hashtags}
+                {influencer?.hashtags}
               </p>
               <p className="text-base font-medium text-gray-700 mr-2">
-                {influencer.site}
+                {influencer?.site}
               </p>
             </div>
           </div>
@@ -88,7 +100,7 @@ const InfluencerDetail = ({
               >
                 <img
                   className=" object-center object-cover h-40 w-40 rounded-full"
-                  src={influencer.avatar_url}
+                  src={influencer?.avatar_url}
                   alt="Profile"
                 />
               </button>
