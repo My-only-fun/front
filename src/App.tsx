@@ -6,6 +6,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Landing from "./components/Landing";
 import InfluencerDetail from "./components/influencer/InfluencerDetail";
 import PrivateRoute from "./components/Routing/PrivateRoute";
+import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
 
 function App() {
   const queryClient = new QueryClient();
@@ -18,6 +20,12 @@ function App() {
               <Route exact path="/">
                 <Landing />
               </Route>
+                <Route exact path="/login">
+                    <Login />
+                </Route>
+                <Route exact path="/register">
+                    <Register />
+                </Route>
               <PrivateRoute path="/influencer/:id" component={InfluencerDetail}/>
             </Switch>
           </BrowserRouter>

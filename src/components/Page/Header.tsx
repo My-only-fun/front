@@ -34,11 +34,20 @@ const Header: React.FC = () => {
                   <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </Link>
-              <span className="text-base font-semibold text-gray-700 mr-2">
-                <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
-                  Login
-                </button>
-              </span>
+              <Link to="/login">
+                <span className="text-base font-semibold text-gray-700 mr-2">
+                  <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                    Login
+                  </button>
+                </span>
+              </Link>
+              <Link to="/register">
+                <span className="text-base font-semibold text-gray-700 mr-2">
+                  <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                    Register
+                  </button>
+                </span>
+              </Link>
 
               {/*<button*/}
               {/*    className="flex-shrink-0 p-1 border-transparent text-gray-700 rounded-full hover:text-gray-600 focus:outline-none focus:text-gray-600 transition duration-150 ease-in-out"*/}
