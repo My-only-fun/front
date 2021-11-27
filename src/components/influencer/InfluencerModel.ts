@@ -6,5 +6,6 @@ export default class InfluencerModel {
     description: string | undefined;
     hashtags: string | undefined;
     site: string | undefined;
-    avatar: string | undefined;
+    avatar_url: string | undefined;
+    email: string | undefined;
 }

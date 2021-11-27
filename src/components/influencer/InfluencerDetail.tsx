@@ -88,7 +88,7 @@ const InfluencerDetail = ({
               >
                 <img
                   className=" object-center object-cover h-40 w-40 rounded-full"
-                  src={influencer.avatar}
+                  src={influencer.avatar_url}
                   alt="Profile"
                 />
               </button>

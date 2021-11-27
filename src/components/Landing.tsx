@@ -1,41 +1,68 @@
-import React from 'react';
+import React from "react";
 import InfluencerCard from "./influencer/InfluencerCard";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Header from "./Header";
-import {influencers} from "../assets/influencers";
 import InfluencerModel from "./influencer/InfluencerModel";
 import Footer from "./Footer";
-
-const influencerList: InfluencerModel[] = influencers;
+import { useInfluencerList } from "../hooks/influencer";
+import NoInfluencers from "./influencer/NoInfluencers";
 
 const Landing: React.FC = () => {
-    return (
-        <>
-            <Header/>
+  let influencerList: InfluencerModel[] = [];
 
-            <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-                <div className="text-center pb-12">
-                    <h2 className="text-base font-bold text-indigo-600">
-                        We have exactly what you are looking for...
-                    </h2>
-                    <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
-                        Check our awesome influencers
-                    </h1>
-                </div>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    {influencerList.map((influencer: InfluencerModel ) => (
-                        <Link to={"/influencer/" + influencer.id }>
-                            <InfluencerCard
-                                influencer={influencer}
-                            />
-                        </Link>
+  const {
+    isLoading: isLoadingInfluencer,
+    isError: isErrorInfluencer,
+    data: influencerData,
+    error,
+  } = useInfluencerList();
 
-                    ))}
-                </div>
-            </section>
-            <Footer/>
-        </>
-    );
+  if (isLoadingInfluencer) {
+    return <div>Loading...</div>;
+  }
+
+  if (isErrorInfluencer) {
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+  }
+
+  if (influencerData) {
+    influencerList = influencerData;
+  }
+
+  return (
+    <>
+      <Header />
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+        <div className="text-center pb-12">
+          <h2 className="text-base font-bold text-indigo-600">
+            We have exactly what you are looking for...
+          </h2>
+          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-gray-900">
+            Check our awesome influencers
+          </h1>
+        </div>
+
+        {influencerList.length !== 0 ? (
+          influencerList.map((influencer: InfluencerModel) => (
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <Link to={"/influencer/" + influencer.id}>
+                <InfluencerCard key={influencer.id} influencer={influencer} />
+              </Link>
+            </div>
+          ))
+        ) : (
+          <>
+            {/*<h1>Oops... there is no influencers yet ...</h1>*/}
+            <NoInfluencers />
+          </>
+        )}
+      </section>
+      <Footer />
+    </>
+  );
 };
 
 export default Landing;

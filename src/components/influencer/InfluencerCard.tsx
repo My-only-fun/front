@@ -11,7 +11,7 @@ const InfluencerCard : React.FC<InfluencerProps> = ({influencer}) => {
             <div className="w-full bg-white rounded-lg sahdow-lg overflow-hidden flex flex-col md:flex-row">
                 <div className="w-full md:w-2/5 h-80">
                     <img className="object-center object-cover w-full h-full"
-                         src={influencer.avatar}
+                         src={influencer.avatar_url}
                          alt="Influencer profil pic"/>
                 </div>
                 <div className="w-full md:w-3/5 text-left p-6 md:p-4 space-y-2">
