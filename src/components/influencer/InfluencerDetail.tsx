@@ -75,8 +75,8 @@ const InfluencerDetail = ({
             </div>
 
             <div className="text-left pl-4 pt-3">
-              <span className="text-lg font-bold text-gray-700 mr-2">
-                {influencer?.job}
+              <span className="text-base font-medium text-gray-700 mr-2">
+                {influencer?.description}
               </span>
             </div>
 
