@@ -1,9 +1,9 @@
 import React from "react";
 import InfluencerCard from "./influencer/InfluencerCard";
 import { Link } from "react-router-dom";
-import Header from "./Header";
+import Header from "./Page/Header";
 import InfluencerModel from "./influencer/InfluencerModel";
-import Footer from "./Footer";
+import Footer from "./Page/Footer";
 import { useInfluencerList } from "../hooks/influencer";
 import NoInfluencers from "./influencer/NoInfluencers";
 

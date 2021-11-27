@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 interface PageProps {
     children: React.ReactElement | ReactElement[];
