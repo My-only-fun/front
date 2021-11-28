@@ -24,8 +24,9 @@ const authenticatedRequest = (options: AxiosRequestConfig) => {
 const commonRequest = (options: AxiosRequestConfig) => {
   const onSuccess = (response: any) => response;
   const onError = (error: any) => {
+    throw error;
     // optionaly catch errors and add some additional logging here
-    return error;
+    // return error;
   };
 
   return client({ timeout: 5000, ...options })

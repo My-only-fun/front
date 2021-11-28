@@ -1,8 +1,55 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import Page from "../Page/Page";
+import { useToken } from "../../hooks/token";
+import { register } from "../../hooks/register";
+import Label from "../utils/Label";
 
 const Register: React.FC = () => {
+  const history = useHistory();
+  const { token, setToken } = useToken();
+  const [status, setStatus] = useState("");
+  const [message, setMessage] = useState("");
+
+  const registerUser = async (event: any) => {
+    event.preventDefault();
+
+    if (event.target.password.value !== event.target.passwordConfirmed.value) {
+      setMessage("Passwords doesn't match");
+      setStatus("Error");
+      return;
+    }
+
+    let errorOnRegister: boolean = false;
+    await register(
+      event.target.influencerName.value,
+      event.target.username.value,
+      event.target.descriptionInfluencer.value,
+      event.target.siteInf.value,
+      event.target.hashtags.value,
+      event.target.avatar_urlInf.value,
+      event.target.emailInf.value,
+      event.target.password.value
+    ).catch((event) => {
+      if (event.response.status === 409) {
+        errorOnRegister = true;
+      }
+    });
+
+    if (errorOnRegister) {
+      setMessage("Email or username already taken");
+      setStatus("Error");
+      return;
+    }
+
+    // const token = await login(
+    //   event.target.username.value,
+    //   event.target.password.value
+    // );
+    //
+    // setToken(token);
+    // history.push("/");
+  };
   return (
     <Page>
       {/*// <!-- Container -->*/}
@@ -21,7 +68,10 @@ const Register: React.FC = () => {
             {/*// <!-- Col -->*/}
             <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
               <h3 className="pt-4 text-2xl text-center">Create an Account!</h3>
-              <form className="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+              <form
+                className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
+                onSubmit={registerUser}
+              >
                 <div className="mb-4 md:flex md:justify-between">
                   <div className="mb-4 md:mr-2 md:mb-0">
                     <label
@@ -35,6 +85,7 @@ const Register: React.FC = () => {
                       id="influencerName"
                       type="text"
                       placeholder="Influencer Name"
+                      required={true}
                     />
                   </div>
                   <div className="md:ml-2">
@@ -49,50 +100,54 @@ const Register: React.FC = () => {
                       id="username"
                       type="text"
                       placeholder="Username"
+                      required={true}
                     />
                   </div>
                 </div>
                 <div className="mb-4">
                   <label
                     className="block mb-2 text-sm font-bold text-gray-700"
-                    htmlFor="email"
+                    htmlFor="emailInf"
                   >
                     Email
                   </label>
                   <input
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="email"
+                    id="emailInf"
                     type="email"
                     placeholder="Email"
+                    required={true}
                   />
                 </div>
                 <div className="mb-4">
                   <label
                     className="block mb-2 text-sm font-bold text-gray-700"
-                    htmlFor="description"
+                    htmlFor="descriptionInfluencer"
                   >
                     Description
                   </label>
                   <input
                     className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="description"
+                    id="descriptionInfluencer"
                     type="text"
                     placeholder="Your description"
+                    required={true}
                   />
                 </div>
                 <div className="mb-4 md:flex md:justify-between">
                   <div className="mb-4 md:mr-2 md:mb-0">
                     <label
                       className="block mb-2 text-sm font-bold text-gray-700"
-                      htmlFor="site"
+                      htmlFor="siteInf"
                     >
                       Your website
                     </label>
                     <input
                       className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="site"
+                      id="siteInf"
                       type="text"
                       placeholder="Your website"
+                      required={true}
                     />
                   </div>
                   <div className="md:ml-2">
@@ -107,6 +162,22 @@ const Register: React.FC = () => {
                       id="hashtags"
                       type="text"
                       placeholder="Hashtags"
+                      required={true}
+                    />
+                  </div>
+                  <div className="md:ml-2">
+                    <label
+                      className="block mb-2 text-sm font-bold text-gray-700"
+                      htmlFor="avatar_urlInf"
+                    >
+                      Avatar URL
+                    </label>
+                    <input
+                      className="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+                      id="avatar_urlInf"
+                      type="text"
+                      placeholder="Your profile pic url"
+                      required={true}
                     />
                   </div>
                 </div>
@@ -123,33 +194,34 @@ const Register: React.FC = () => {
                       id="password"
                       type="password"
                       placeholder="******************"
+                      required={true}
                     />
-                    {/*<p className="text-xs italic text-red-500">*/}
-                    {/*  Please choose a password.*/}
-                    {/*</p>*/}
                   </div>
                   <div className="md:ml-2">
                     <label
                       className="block mb-2 text-sm font-bold text-gray-700"
-                      htmlFor="c_password"
+                      htmlFor="passwordConfirmed"
                     >
                       Confirm Password
                     </label>
                     <input
                       className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                      id="c_password"
+                      id="passwordConfirmed"
                       type="password"
                       placeholder="******************"
+                      required={true}
                     />
                   </div>
                 </div>
                 <div className="mb-6 text-center">
                   <button
                     className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-                    type="button"
+                    type="submit"
                   >
                     Register Account
                   </button>
+                  <div className="mt-6 " />
+                  <Label status={status} message={message} />
                 </div>
                 <hr className="mb-6 border-t" />
                 <div className="text-center">

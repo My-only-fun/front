@@ -38,8 +38,7 @@ const Login: React.FC = () => {
                   "
                   >
                     <svg className="svg-icon" viewBox="-5 -5 30 30">
-                      <path
-    d="M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z"/>
+                      <path d="M12.075,10.812c1.358-0.853,2.242-2.507,2.242-4.037c0-2.181-1.795-4.618-4.198-4.618S5.921,4.594,5.921,6.775c0,1.53,0.884,3.185,2.242,4.037c-3.222,0.865-5.6,3.807-5.6,7.298c0,0.23,0.189,0.42,0.42,0.42h14.273c0.23,0,0.42-0.189,0.42-0.42C17.676,14.619,15.297,11.677,12.075,10.812 M6.761,6.775c0-2.162,1.773-3.778,3.358-3.778s3.359,1.616,3.359,3.778c0,2.162-1.774,3.778-3.359,3.778S6.761,8.937,6.761,6.775 M3.415,17.69c0.218-3.51,3.142-6.297,6.704-6.297c3.562,0,6.486,2.787,6.705,6.297H3.415z" />
                     </svg>
                   </div>
 
@@ -83,20 +82,28 @@ const Login: React.FC = () => {
                     text-gray-400
                   "
                   >
-					<span id="whoobe-4occ6"
-                          className="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0"
+                    <span
+                      id="whoobe-4occ6"
+                      className="z-highest rounded-l-lg w-10 h-10 flex justify-center items-center text-2xl text-gray-400 border border-r-0"
                     >
-						<svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"
-                             aria-hidden="true" role="img" width="1em" height="1em" preserveAspectRatio="xMidYMid meet"
-                             viewBox="0 0 32 32" className="iconify iconify--carbon">
-							<path
-                                d="M21 2a8.998 8.998 0 0 0-8.612 11.612L2 24v6h6l10.388-10.388A9 9 0 1 0 21 2zm0 16a7.013 7.013 0 0 1-2.032-.302l-1.147-.348l-.847.847l-3.181 3.181L12.414 20L11 21.414l1.379 1.379l-1.586 1.586L9.414 23L8 24.414l1.379 1.379L7.172 28H4v-3.172l9.802-9.802l.848-.847l-.348-1.147A7 7 0 1 1 21 18z"
-                                fill="currentColor">
-							</path>
-							<circle cx="22" cy="10" r="2" fill="currentColor">
-							</circle>
-						</svg>
-					</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        xmlnsXlink="http://www.w3.org/1999/xlink"
+                        aria-hidden="true"
+                        role="img"
+                        width="1em"
+                        height="1em"
+                        preserveAspectRatio="xMidYMid meet"
+                        viewBox="0 0 32 32"
+                        className="iconify iconify--carbon"
+                      >
+                        <path
+                          d="M21 2a8.998 8.998 0 0 0-8.612 11.612L2 24v6h6l10.388-10.388A9 9 0 1 0 21 2zm0 16a7.013 7.013 0 0 1-2.032-.302l-1.147-.348l-.847.847l-3.181 3.181L12.414 20L11 21.414l1.379 1.379l-1.586 1.586L9.414 23L8 24.414l1.379 1.379L7.172 28H4v-3.172l9.802-9.802l.848-.847l-.348-1.147A7 7 0 1 1 21 18z"
+                          fill="currentColor"
+                        />
+                        <circle cx="22" cy="10" r="2" fill="currentColor" />
+                      </svg>
+                    </span>
                   </div>
 
                   <input
