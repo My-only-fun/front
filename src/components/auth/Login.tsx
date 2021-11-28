@@ -1,8 +1,27 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Page from "../Page/Page";
+import { login } from "../../hooks/register";
+import { useToken } from "../../hooks/token";
 
 const Login: React.FC = () => {
+  const history = useHistory();
+  const { token, setToken } = useToken();
+
+  if (token) {
+    history.push("/");
+  }
+  const loginUser = async (event: any) => {
+    event.preventDefault();
+
+    const token = await login(
+      event.target.username.value,
+      event.target.password.value
+    );
+
+    setToken(token);
+    history.push("/");
+  };
   return (
     <Page>
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
@@ -15,10 +34,10 @@ const Login: React.FC = () => {
           </div>
 
           <div className="mt-10">
-            <form action="#">
+            <form onSubmit={loginUser}>
               <div className="flex flex-col mb-5">
                 <label
-                  htmlFor="email"
+                  htmlFor="username"
                   className="mb-1 text-xs tracking-wide text-gray-600"
                 >
                   Username:
@@ -43,9 +62,9 @@ const Login: React.FC = () => {
                   </div>
 
                   <input
-                    id="email"
-                    type="email"
-                    name="email"
+                    id="username"
+                    type="text"
+                    name="username"
                     className="
                     text-sm
                     placeholder-gray-500
