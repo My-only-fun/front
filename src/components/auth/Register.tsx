@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Page from "../Page/Page";
 import { useToken } from "../../hooks/token";
-import { register } from "../../hooks/register";
+import {login, register} from "../../hooks/register";
 import Label from "../utils/Label";
 
 const Register: React.FC = () => {
@@ -11,6 +11,9 @@ const Register: React.FC = () => {
   const [status, setStatus] = useState("");
   const [message, setMessage] = useState("");
 
+  if (token) {
+    history.push('/');
+  }
   const registerUser = async (event: any) => {
     event.preventDefault();
 
@@ -42,13 +45,13 @@ const Register: React.FC = () => {
       return;
     }
 
-    // const token = await login(
-    //   event.target.username.value,
-    //   event.target.password.value
-    // );
-    //
-    // setToken(token);
-    // history.push("/");
+    const token = await login(
+      event.target.username.value,
+      event.target.password.value
+    );
+
+    setToken(token);
+    history.push("/");
   };
   return (
     <Page>

@@ -1,5 +1,19 @@
 import { commonRequest } from "./utils/request";
 
+const login = async (username: string, password: string): Promise<string> => {
+  const { data } = await commonRequest({
+    url: `/auth/login`,
+    method: "POST",
+    data: {
+      username: username,
+      password: password,
+    },
+  });
+
+  return data.access_token;
+};
+
+
 const register = async (
   name: string,
   username: string,
@@ -15,7 +29,7 @@ const register = async (
   email: string;
   username: string;
 }> => {
-  const { data, error } = await commonRequest({
+  const { data } = await commonRequest({
     url: `/users`,
     method: "POST",
     data: {
@@ -30,10 +44,7 @@ const register = async (
     },
   });
 
-  console.log(data);
-  console.log(error);
-
   return data;
 };
 
-export { register };
+export { login, register };
