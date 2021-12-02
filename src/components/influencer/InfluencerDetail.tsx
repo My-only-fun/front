@@ -2,6 +2,7 @@ import React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import Page from "../Page/Page";
 import useInfluencerDetail from "../../hooks/influencer";
+import BenefitCard from "../benefits/BenefitCard";
 
 interface InfluencerDetailParams {
   id: string;
@@ -25,6 +26,40 @@ const InfluencerDetail = ({
     if (error) {
       return <span>Error: {error.message}</span>;
     }
+  }
+
+  // console.log(influencer?.benefits?.forEach((benefit) => {
+  //   // benefit !== undefined ? console.log(benefit) : console.log("toto")
+  // }));
+  // influencer?.benefits?.forEach((benefit) => {
+  //   console.log(benefit);
+  // });
+
+  let benefitsListComponent: JSX.Element = <></>;
+  if (influencer) {
+    if (influencer.benefits?.length !== 0) {
+      benefitsListComponent = (
+        <>
+          {influencer.benefits?.map((benefit) => {
+            return <BenefitCard key={benefit.id} benefit={benefit} />;
+          })}
+        </>
+      );
+    }
+
+    // if (influencerList.length !== 0) {
+    //   influencersListComponent = (
+    //       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+    //         {influencerList.map((influencer: InfluencerModel) => (
+    //             <Link to={"/influencer/" + influencer.id}>
+    //               <InfluencerCard key={influencer.id} influencer={influencer} />
+    //             </Link>
+    //         ))}
+    //       </div>
+    //   );
+    // } else {
+    //   influencersListComponent = <NoInfluencers />;
+    // }
   }
 
   return (
@@ -108,68 +143,6 @@ const InfluencerDetail = ({
           </div>
         </div>
 
-        {/*// <!--status show icon-->*/}
-
-        {/*<div className="inline-flex ml-36 mt-16">*/}
-        {/*  <div className="flex-1 text-center px-4 py-2 m-2">*/}
-        {/*    <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">*/}
-        {/*      <img*/}
-        {/*        className="object-cover w-full h-full"*/}
-        {/*        src="https://images.unsplash.com/photo-1502164980785-f8aa41d53611?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"*/}
-        {/*      />*/}
-        {/*    </div>*/}
-        {/*    <h1 className="pt-16 text-base font-semibold text-gray-900">Fun</h1>*/}
-        {/*  </div>*/}
-
-        {/*  <div className="flex-1 text-center px-4 py-2 m-2">*/}
-        {/*    <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">*/}
-        {/*      <img*/}
-        {/*        className="object-cover w-full h-full"*/}
-        {/*        src="https://images.unsplash.com/photo-1456415333674-42b11b9f5b7b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"*/}
-        {/*      />*/}
-        {/*    </div>*/}
-        {/*    <h1 className="pt-16 text-base font-semibold text-gray-900">*/}
-        {/*      Travel*/}
-        {/*    </h1>*/}
-        {/*  </div>*/}
-
-        {/*  <div className="flex-1 text-center px-4 py-2 m-2">*/}
-        {/*    <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">*/}
-        {/*      <img*/}
-        {/*        className="object-cover w-full h-full"*/}
-        {/*        src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80"*/}
-        {/*      />*/}
-        {/*    </div>*/}
-        {/*    <h1 className="pt-16 text-base font-semibold text-gray-900">*/}
-        {/*      Food*/}
-        {/*    </h1>*/}
-        {/*  </div>*/}
-
-        {/*  <div className="flex-1 text-center px-4 py-2 m-2">*/}
-        {/*    <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">*/}
-        {/*      <img*/}
-        {/*        className="object-cover w-full h-full"*/}
-        {/*        src="https://images.unsplash.com/photo-1516834474-48c0abc2a902?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80"*/}
-        {/*      />*/}
-        {/*    </div>*/}
-        {/*    <h1 className="pt-16 text-base font-semibold text-gray-900">*/}
-        {/*      Sketch*/}
-        {/*    </h1>*/}
-        {/*  </div>*/}
-
-        {/*  <div className="flex-1 text-center px-4 py-2 m-2">*/}
-        {/*    <div className="relative shadow-xl mx-auto h-24 w-24 -my-12 border-white rounded-full overflow-hidden border-4">*/}
-        {/*      <img*/}
-        {/*        className="object-cover w-full h-full"*/}
-        {/*        src="https://images.unsplash.com/photo-1444021465936-c6ca81d39b84?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"*/}
-        {/*      />*/}
-        {/*    </div>*/}
-        {/*    <h1 className="pt-16 text-base font-semibold text-gray-900">*/}
-        {/*      My Work*/}
-        {/*    </h1>*/}
-        {/*  </div>*/}
-        {/*</div>*/}
-
         <hr className="border-gray-500 mt-6" />
         <hr className="border-gray-500 w-20 border-t-1 ml-64 border-gray-800" />
 
@@ -194,155 +167,26 @@ const InfluencerDetail = ({
                 </svg>
               </button>
             </div>
-            <div className="flex inline-flex ml-2 mt-1">
-              <h3 className="text-sm font-bold text-gray-800 mr-2">POSTS</h3>
-            </div>
-          </div>
-
-          <div className="flex text-gray-700 text-center py-2 m-2 pr-5">
-            <div className="flex inline-flex">
-              <button
-                className="border-transparent text-gray-600 rounded-full hover:text-blue-600 focus:outline-none focus:text-gray-600"
-                aria-label="Notifications"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </button>
-            </div>
-            <div className="flex inline-flex ml-2 mt-1">
-              <h3 className="text-sm font-medium text-gray-700 mr-2">IGTV</h3>
-            </div>
-          </div>
-
-          <div className="flex text-gray-700 text-center py-2 m-2 pr-5">
-            <div className="flex inline-flex">
-              <button
-                className="border-transparent text-gray-600 rounded-full hover:text-blue-600 focus:outline-none focus:text-gray-600"
-                aria-label="Notifications"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
-                </svg>
-              </button>
-            </div>
-            <div className="flex inline-flex ml-2 mt-1">
-              <h3 className="text-sm font-medium text-gray-700 mr-2">SAVED</h3>
-            </div>
-          </div>
-
-          <div className="flex text-gray-700 text-center py-2 m-2 pr-5">
-            <div className="flex inline-flex">
-              <button
-                className="border-transparent text-gray-600 rounded-full hover:text-blue-600 focus:outline-none focus:text-gray-600"
-                aria-label="Notifications"
-              >
-                <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                </svg>
-              </button>
-            </div>
-            <div className="flex inline-flex ml-2 mt-1">
-              <h3 className="text-sm font-medium text-gray-700 mr-2">TAGGED</h3>
-            </div>
           </div>
         </div>
 
-        {/*// <!--post images-->*/}
-
-        <div className="flex pt-4">
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-        </div>
-
-        <div className="flex pt-4">
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-        </div>
-
-        <div className="flex pt-4">
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
-          </div>
-          <div className="flex-1 text-center px-4 py-2 m-2">
-            <img
-              className="w-full"
-              src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="img1"
-            />
+        <div className="min-h-screen items-center">
+          <div className="">
+            <div className="text-center font-semibold">
+              <h1 className="text-5xl">
+                <span className="text-indigo-500 tracking-wide">Benefits </span>
+                <span>Plans</span>
+              </h1>
+              <p className="pt-6 text-xl text-gray-400 font-normal w-full px-8 md:w-full">
+                Choose a plan that feat best for you and
+                <br /> your needs.
+              </p>
+            </div>
+            {/*// <!-- cards -->*/}
+            <div className="my-16 sm:flex flex-wrap justify-center items-center gap-8">
+              {/*// <!-- Cars rendering -->*/}
+              {benefitsListComponent}
+            </div>
           </div>
         </div>
       </div>
