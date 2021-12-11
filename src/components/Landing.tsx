@@ -6,6 +6,7 @@ import InfluencerModel from "./influencer/InfluencerModel";
 import Footer from "./Page/Footer";
 import { useInfluencerList } from "../hooks/influencer";
 import NoInfluencers from "./influencer/NoInfluencers";
+import Wallet from "./wallet/Wallet";
 
 const Landing: React.FC = () => {
   let influencerList: InfluencerModel[] = [];
@@ -32,13 +33,16 @@ const Landing: React.FC = () => {
     influencerList = influencerData;
     if (influencerList.length !== 0) {
       influencersListComponent = (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {influencerList.map((influencer: InfluencerModel) => (
-            <Link to={"/influencer/" + influencer.id}>
-              <InfluencerCard key={influencer.id} influencer={influencer} />
-            </Link>
-          ))}
-        </div>
+          <>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              {influencerList.map((influencer: InfluencerModel) => (
+                  <Link to={"/influencer/" + influencer.id}>
+                    <InfluencerCard key={influencer.id} influencer={influencer}/>
+                  </Link>
+              ))}
+            </div>
+            <Wallet/>
+          </>
       );
     } else {
       influencersListComponent = <NoInfluencers />;
