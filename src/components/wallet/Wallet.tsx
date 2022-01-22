@@ -1,57 +1,31 @@
-import React from "react";
-import { useWeb3React } from "@web3-react/core";
+import React, {useState} from "react";
 import { InjectedConnector } from "@web3-react/injected-connector";
-import { useWallet } from "../../hooks/wallet";
-import web3 from "../../hooks/utils/web3";
-import myonlyfun from "../../assets/config"
+import { getMyOnlyFunAdressContract } from "../../Web3Client";
+import { useAccountAddress } from "../../hooks/accountAddress";
 
 export const injected = new InjectedConnector({
   supportedChainIds: [1, 3, 4, 5, 42],
 });
 
 const Wallet: React.FC = () => {
-  const { active, account, activate, deactivate } = useWeb3React();
-  const { wallet, setWallet } = useWallet();
+  const { accountAddress } = useAccountAddress();
+  const [message, setMessage] = useState('');
 
 
-  const address = async (e: any) => {
-    e.preventDefault();
-
-  const contractAddress = await myonlyfun.methods.getContractAddress().call();
-  console.log(contractAddress);
-
+  const fetchBalance = () => {
+    getMyOnlyFunAdressContract().then(contract => {
+        setMessage(contract);
+    });
   };
   
-  async function connect() {
-    try {
-      await activate(injected);
-      if (active && account) {
-        setWallet(account);
-      }
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
 
-  async function disconnect() {
-    try {
-      deactivate();
-    } catch (ex) {
-      console.log(ex);
-    }
-  }
   return (
     <div className="flex flex-col items-center justify-center">
-      <button onClick={address} />
-      <button
-        onClick={connect}
-        className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"
-      >
-        Connect to MetaMask
-      </button>
-      {active ? (
+      <button className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800" onClick={fetchBalance} >Call Smart contract and getAddress</button>
+      <p>{message}</p>
+      {accountAddress !== 'undefined' ? (
         <span>
-          Connected with <b>{account}</b>
+          Connected with <b>{accountAddress}</b>
         </span>
       ) : (
         <span>Not connected
@@ -59,12 +33,12 @@ const Wallet: React.FC = () => {
         </span>
 
       )}
-      <button
-        onClick={disconnect}
-        className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"
-      >
-        Disconnect
-      </button>
+      {/*<button*/}
+      {/*  onClick={disconnect}*/}
+      {/*  className="py-2 mt-20 mb-4 text-lg font-bold text-white rounded-lg w-56 bg-blue-600 hover:bg-blue-800"*/}
+      {/*>*/}
+      {/*  Disconnect*/}
+      {/*</button>*/}
     </div>
   );
 };
