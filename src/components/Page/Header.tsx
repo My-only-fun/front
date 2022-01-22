@@ -1,10 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {Link, useHistory} from "react-router-dom";
+import { getToken, removeToken } from "../../hooks/token";
 import myOnlyFun from "../../assets/my-only-fun.png";
 
-const Header: React.FC = () => {
-  return (
-    <div className="insta-clone">
+const Header = (): React.ReactElement => {
+
+  const history = useHistory();
+  const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
+
+  const token = getToken()
+  useEffect(() => {
+    if(token && token !== ''){
+      setLoggedIn(true)
+    }else{
+      setLoggedIn(false)}
+  }, [token]);
+
+  const disconnect = () => {
+    removeToken();
+    setLoggedIn(false);
+    history.push('/');
+  }
+
+
+    return (<div className="insta-clone">
       <nav className="bg-white shadow px-48 border-b border-gray-400">
         <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
           <div className="flex justify-between h-16">
@@ -18,36 +37,51 @@ const Header: React.FC = () => {
             <div className="flex-1 flex items-center justify-center px-2 lg:ml-12" />
             <div className="lg:ml-4 lg:flex lg:items-center">
               <Link
-                to="/"
-                className="flex-shrink-0 p-1 border-transparent text-gray-700 rounded-full hover:text-gray-600 focus:outline-none focus:text-gray-600 transition duration-150 ease-in-out"
-                aria-label="Home"
+                  to="/"
+                  className="flex-shrink-0 p-1 border-transparent text-gray-700 rounded-full hover:text-gray-600 focus:outline-none focus:text-gray-600 transition duration-150 ease-in-out"
+                  aria-label="Home"
               >
                 <svg
-                  className="h-6 w-6"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+                    className="h-6 w-6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                 >
                   <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </Link>
-              <Link to="/login">
-                <span className="text-base font-semibold text-gray-700 mr-2">
-                  <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
-                    Login
-                  </button>
-                </span>
-              </Link>
-              <Link to="/register">
-                <span className="text-base font-semibold text-gray-700 mr-2">
-                  <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
-                    Register
-                  </button>
-                </span>
-              </Link>
+              {
+                  isLoggedIn ?
+                      <>
+                          <span className="text-base font-semibold text-gray-700 mr-2" onClick={disconnect}>
+                            <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                              Disconnect
+                            </button>
+                          </span>
+                      </>
+                      :
+                      <>
+                        <Link to="/login">
+                          <span className="text-base font-semibold text-gray-700 mr-2">
+                            <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                              Login
+                            </button>
+                          </span>
+                        </Link>
+                          <Link to="/register">
+                            <span className="text-base font-semibold text-gray-700 mr-2">
+                            <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                              Register
+                            </button>
+                          </span>
+                        </Link>
+                      </>
+
+              }
+
 
               {/*<button*/}
               {/*    className="flex-shrink-0 p-1 border-transparent text-gray-700 rounded-full hover:text-gray-600 focus:outline-none focus:text-gray-600 transition duration-150 ease-in-out"*/}
@@ -109,8 +143,8 @@ const Header: React.FC = () => {
           </div>
         </div>
       </nav>
-    </div>
-  );
+    </div>)
+
 };
 
 export default Header;

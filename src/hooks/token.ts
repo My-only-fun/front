@@ -8,6 +8,10 @@ function getToken(): string {
   return '';
 }
 
+function removeToken() {
+  localStorage.removeItem('access_token')
+}
+
 function useToken() {
   function setToken(userToken: string) {
     localStorage.setItem('access_token', userToken);
@@ -20,4 +24,4 @@ function useToken() {
   };
 }
 
-export { getToken, useToken };
+export { getToken, useToken, removeToken };
