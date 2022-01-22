@@ -8,6 +8,7 @@ import { useInfluencerList } from "../hooks/influencer";
 import NoInfluencers from "./influencer/NoInfluencers";
 import Wallet from "./wallet/Wallet";
 
+
 const Landing: React.FC = () => {
   let influencerList: InfluencerModel[] = [];
 
@@ -41,6 +42,9 @@ const Landing: React.FC = () => {
                   </Link>
               ))}
             </div>
+            {/*
+
+            */}
             <Wallet/>
           </>
       );
