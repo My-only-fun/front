@@ -1,13 +1,20 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import InfluencerCard from "./influencer/InfluencerCard";
 import { Link } from "react-router-dom";
 import Header from "./Page/Header";
 import InfluencerModel from "./influencer/InfluencerModel";
 import Footer from "./Page/Footer";
-import { useInfluencerList } from "../hooks/influencer";
+import {getInfluencers, getMe, useInfluencerList} from "../hooks/influencer";
 import NoInfluencers from "./influencer/NoInfluencers";
 import Wallet from "./wallet/Wallet";
+import UserModel from "./auth/UserModel";
 
+type Data = {
+  isLoading: boolean,
+  isError: boolean,
+  data?: InfluencerModel[],
+  error: any,
+}
 
 const Landing: React.FC = () => {
   let influencerList: InfluencerModel[] = [];
@@ -17,7 +24,7 @@ const Landing: React.FC = () => {
     isError: isErrorInfluencer,
     data: influencerData,
     error,
-  } = useInfluencerList();
+  }: Data = useInfluencerList();
 
   if (isLoadingInfluencer) {
     return <div>Loading...</div>;
@@ -55,7 +62,7 @@ const Landing: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <Header/>
 
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
         <div className="text-center pb-12">

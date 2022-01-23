@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from "react";
 import {Link, useHistory} from "react-router-dom";
 import { getToken, removeToken } from "../../hooks/token";
+import {becomeAnInfluencer, getMe} from "../../hooks/influencer";
 import myOnlyFun from "../../assets/my-only-fun.png";
+import UserModel from "../auth/UserModel";
 
 const Header = (): React.ReactElement => {
 
   const history = useHistory();
   const [isLoggedIn, setLoggedIn] = useState<boolean>(false);
+  const [me, setMe] = useState<UserModel | null>(null);
 
   const token = getToken()
+  useEffect(() => {
+    getMe().then(
+        response => setMe(response)
+    )
+  },[])
+
   useEffect(() => {
     if(token && token !== ''){
       setLoggedIn(true)
@@ -20,6 +29,15 @@ const Header = (): React.ReactElement => {
     removeToken();
     setLoggedIn(false);
     history.push('/');
+  }
+
+  const becomeInfulencer = async (event: any) => {
+    event.preventDefault();
+    if(me !== null && me.id){
+      const updatedUser = await becomeAnInfluencer(me.id);
+      setMe(updatedUser)
+      history.go(0) // reload
+    }
   }
 
 
@@ -61,6 +79,17 @@ const Header = (): React.ReactElement => {
                               Disconnect
                             </button>
                           </span>
+                        {
+                          me !== null && !me.is_influencer &&
+                            <>
+                              <span className="text-base font-semibold text-gray-700 mr-2" onClick={becomeInfulencer}>
+                                <button className="bg-transparent hover:bg-blue-500 text-gray-700 font-semibold hover:text-white py-2 px-4 border border-gray-600 hover:border-transparent rounded">
+                                  Become an influencer
+                                </button>
+                              </span>
+                            </>
+                        }
+
                       </>
                       :
                       <>
