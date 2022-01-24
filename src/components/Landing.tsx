@@ -1,20 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import InfluencerCard from "./influencer/InfluencerCard";
 import { Link } from "react-router-dom";
 import Header from "./Page/Header";
 import InfluencerModel from "./influencer/InfluencerModel";
 import Footer from "./Page/Footer";
-import {getInfluencers, getMe, useInfluencerList} from "../hooks/influencer";
+import { useInfluencerList } from "../hooks/influencer";
 import NoInfluencers from "./influencer/NoInfluencers";
 import Wallet from "./wallet/Wallet";
-import UserModel from "./auth/UserModel";
 
 type Data = {
-  isLoading: boolean,
-  isError: boolean,
-  data?: InfluencerModel[],
-  error: any,
-}
+  isLoading: boolean;
+  isError: boolean;
+  data?: InfluencerModel[];
+  error: any;
+};
 
 const Landing: React.FC = () => {
   let influencerList: InfluencerModel[] = [];
@@ -41,19 +40,19 @@ const Landing: React.FC = () => {
     influencerList = influencerData;
     if (influencerList.length !== 0) {
       influencersListComponent = (
-          <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {influencerList.map((influencer: InfluencerModel) => (
-                  <Link to={"/influencer/" + influencer.id}>
-                    <InfluencerCard key={influencer.id} influencer={influencer}/>
-                  </Link>
-              ))}
-            </div>
-            {/*
+        <>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {influencerList.map((influencer: InfluencerModel) => (
+              <Link to={"/influencer/" + influencer.id}>
+                <InfluencerCard key={influencer.id} influencer={influencer} />
+              </Link>
+            ))}
+          </div>
+          {/*
 
             */}
-            <Wallet/>
-          </>
+          <Wallet />
+        </>
       );
     } else {
       influencersListComponent = <NoInfluencers />;
@@ -62,7 +61,7 @@ const Landing: React.FC = () => {
 
   return (
     <>
-      <Header/>
+      <Header />
 
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
         <div className="text-center pb-12">

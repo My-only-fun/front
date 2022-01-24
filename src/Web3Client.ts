@@ -94,12 +94,38 @@ const isInit = async () => {
     }
 }
 
-export const getMyOnlyFunAdressContract = async () => {
+export const getMyOnlyFunAddressContract = async () => {
     await isInit();
 
     return myOnlyFunContract.methods
         .getContractAddress()
         .call();
+}
+
+export const createInfluencerToken = async (
+    name: string,
+    symbol: string,
+    decimals: number,
+    totalSupply: number,
+): Promise<any> => {
+    await isInit();
+
+    console.log(name, symbol, decimals, totalSupply);
+
+    const response = myOnlyFunContract.methods
+        .createAndDeployOnlyFunERC20(
+            name,
+            symbol,
+            decimals,
+            totalSupply,
+        )
+        .send({
+            from: await selectedAccount,
+            gas: '1000000',
+        });
+
+    console.log(response);
+    return response;
 }
 
 // export const getOwnBalance = async () => {
