@@ -3,37 +3,18 @@ import Page from "../Page/Page";
 import { createInfluencerToken } from "../../Web3Client";
 
 const CreateToken: React.FC = () => {
-
   const createToken = async (event: any) => {
     event.preventDefault();
 
-    console.log(event)
+    console.log(event);
     const tokenAddress = await createInfluencerToken(
-        event.target.tokenName.value,
-        event.target.tokenSymbol.value,
-        event.target.numberOfDecimal.value,
-        event.target.initialSupply.value
-    )
+      event.target.tokenName.value,
+      event.target.tokenSymbol.value,
+      event.target.numberOfDecimal.value,
+      event.target.initialSupply.value
+    );
     console.log(tokenAddress);
   };
-
-  // const createToken = (
-  //     event.target.tokenName.value,
-  //     event.target.tokenSymbol.value,
-  //     event.target.tokenDecimals.value,
-  //     event.target.tokenTotalSupply.value,
-  // ) => {
-  //   getMyOnlyFunAddressContract().then((contract) => {
-  //     contract.methods
-  //         .createToken()
-  //         .send({ from: accountAddress })
-  //         .then((res: any) => {
-  //           setMessage(res);
-  //         });
-  //   });
-  // };
-  
-  
 
   return (
     <Page>
@@ -51,7 +32,9 @@ const CreateToken: React.FC = () => {
             </div>
             {/*// <!-- Col -->*/}
             <div className="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-              <h3 className="pt-4 text-2xl text-center">Create your influencer Token !</h3>
+              <h3 className="pt-4 text-2xl text-center">
+                Create your influencer Token !
+              </h3>
               <form
                 className="px-8 pt-6 pb-8 mb-4 bg-white rounded"
                 onSubmit={createToken}
