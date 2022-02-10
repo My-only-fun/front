@@ -114,7 +114,8 @@ export const createInfluencerToken = async (
     .createAndDeployOnlyFunERC20(name, symbol, decimals, totalSupply)
     .send({
       from: await selectedAccount,
-      gas: "1000000",
+      gas: 1500000,
+      gasPrice: '30000000000'
     });
 
   console.log(response);
