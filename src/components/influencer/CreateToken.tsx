@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "../Page/Page";
+import Loader from "react-loader-spinner";
+
 import { createInfluencerToken } from "../../Web3Client";
 
 const CreateToken: React.FC = () => {
+  const [loading, setLoading] = useState(false);
+
   const createToken = async (event: any) => {
     event.preventDefault();
-
+    setLoading(true);
     console.log(event);
     const tokenAddress = await createInfluencerToken(
       event.target.tokenName.value,
@@ -13,6 +17,7 @@ const CreateToken: React.FC = () => {
       event.target.numberOfDecimal.value,
       event.target.initialSupply.value
     );
+    setLoading(tokenAddress.status);
     console.log(tokenAddress);
   };
 
@@ -105,6 +110,7 @@ const CreateToken: React.FC = () => {
                   <button
                     className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                     type="submit"
+                    disabled={loading}
                   >
                     Become famous !
                   </button>
@@ -113,6 +119,17 @@ const CreateToken: React.FC = () => {
                 </div>
                 <hr className="mb-6 border-t" />
               </form>
+              {loading ? (
+                <Loader
+                  type="ThreeDots"
+                  color="#0a75ab"
+                  height={100}
+                  width={100}
+                  timeout={10000}
+                />
+              ) : (
+                <></>
+              )}
             </div>
           </div>
         </div>
