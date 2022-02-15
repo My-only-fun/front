@@ -14,7 +14,6 @@ const CreateToken: React.FC = () => {
     const tokenAddress = await createInfluencerToken(
       event.target.tokenName.value,
       event.target.tokenSymbol.value,
-      event.target.numberOfDecimal.value,
       event.target.initialSupply.value
     );
     setLoading(tokenAddress.status);
@@ -75,21 +74,6 @@ const CreateToken: React.FC = () => {
                       required={true}
                     />
                   </div>
-                </div>
-                <div className="mb-4">
-                  <label
-                    className="block mb-2 text-sm font-bold text-gray-700"
-                    htmlFor="numberOfDecimal"
-                  >
-                    Number of decimals
-                  </label>
-                  <input
-                    className="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                    id="numberOfDecimal"
-                    type="text"
-                    placeholder="Number of decimals"
-                    required={true}
-                  />
                 </div>
                 <div className="mb-4">
                   <label

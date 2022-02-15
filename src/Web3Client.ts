@@ -13,6 +13,15 @@ function setAccountAddress(userWallet: string) {
   localStorage.setItem("connected_wallet", userWallet);
 }
 
+function getAccountAddress(): string {
+  const accountAddress = localStorage.getItem("connected_wallet");
+  if (accountAddress) {
+    selectedAccount = accountAddress;
+    return accountAddress;
+  }
+  return "";
+}
+
 export const init = async () => {
   // @ts-ignore
   let provider = window.ethereum;
@@ -89,6 +98,9 @@ export const init = async () => {
 };
 
 const isInit = async () => {
+  if (getAccountAddress() !== "") {
+    await init();
+  }
   if (!isInitialized) {
     await init();
   }
@@ -103,19 +115,18 @@ export const getMyOnlyFunAddressContract = async () => {
 export const createInfluencerToken = async (
   name: string,
   symbol: string,
-  decimals: number,
   totalSupply: number
 ) => {
   await isInit();
 
-  console.log(name, symbol, decimals, totalSupply);
+  console.log(name, symbol, totalSupply);
 
   const response = myOnlyFunContract.methods
-    .createAndDeployOnlyFunERC20(name, symbol, decimals, totalSupply)
+    .createAndDeployOnlyFunERC20(name, symbol, totalSupply)
     .send({
       from: await selectedAccount,
       gas: 1500000,
-      gasPrice: '30000000000'
+      gasPrice: "30000000000",
     });
 
   console.log(response);
