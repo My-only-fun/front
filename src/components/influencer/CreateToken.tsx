@@ -3,8 +3,10 @@ import Page from "../Page/Page";
 import Loader from "react-loader-spinner";
 
 import { createInfluencerToken } from "../../Web3Client";
+import { useHistory } from "react-router-dom";
 
 const CreateToken: React.FC = () => {
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
 
   const createToken = async (event: any) => {
@@ -17,6 +19,9 @@ const CreateToken: React.FC = () => {
       event.target.initialSupply.value
     );
     setLoading(tokenAddress.status);
+    if (tokenAddress.status) {
+      history.push("/");
+    }
     console.log(tokenAddress);
   };
 
